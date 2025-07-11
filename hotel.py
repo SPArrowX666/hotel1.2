@@ -30,8 +30,8 @@ def extract_price(text):
 df["Score"] = df["Like12"].apply(extract_score)
 df["Discount (%)"] = df["justifycenter"].apply(extract_discount)
 df["Price (Yen)"] = df["textgray80016"].apply(extract_price)
-hotel_names = df["タイトル"]
-
+df = df.rename(columns={"タイトル": "Hotel Name"})
+hotel_names = df["Hotel Name"]
 
 plt.figure(figsize=(12, 6))
 sns.barplot(x=df["Score"], y=hotel_names, palette="coolwarm")
